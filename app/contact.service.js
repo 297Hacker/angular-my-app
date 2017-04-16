@@ -11,7 +11,11 @@ var ContactService = (function () {
     function ContactService() {
     }
     ContactService.prototype.getContacts = function () {
-        return contacts_1.CONTACTS;
+        return Promise.resolve(contacts_1.CONTACTS);
+    };
+    ContactService.prototype.getContactDetails = function (id) {
+        return this.getContacts()
+            .then(function (contacts) { return contacts.find(function (contact) { return contact.id === id; }); });
     };
     return ContactService;
 }());

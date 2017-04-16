@@ -1,5 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute, Params } from '@angular/router'; 
+import { Location } from '@angular/common';
+
 import { Contact } from './contact';
+import { ContactService } from './contact.service';
 
 @Component({
 	selector: 'contact-detail',
@@ -16,15 +21,28 @@ import { Contact } from './contact';
 				<label> Phone Number </label>
 				<input [(ngModel)]="contact.phone" placeholder="phone"/>
 			</div>
-			<button type="button" (click)="closeDetails()">Close</button>
+			<button type="button" (click)="back()">Go back</button>
 		</div>
 	`
 })
 
-export class ContactDetailComponent{
-	@Input() contact:Contact;
+export class ContactDetailComponent implements OnInit{
+	contact: Contact;
 
-	closeDetails(){
-		this.contact = '';
+	constructor(
+		private contactService: ContactService,
+		private route: ActivatedRoute,
+		private location : Location
+		) {}
+
+	ngOnInit(): void{
+		this.route.params.forEach((params: Params) => {
+			let id = +params['id'];
+			this.contact = this.contactService.getContactDetails(id);
+		})
+	}
+
+	back(){
+		this.location.back();
 	}
 }
