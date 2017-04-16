@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ContactsComponent } from './app.contacts.component';
-import { NewContactComponent } from './app.new-contact.component';
+import { ContactsComponent } from './contacts.component';
+import { NewContactComponent } from './new-contact.component';
+
 
 @Component({
 	selector: 'my-app',
@@ -8,6 +9,7 @@ import { NewContactComponent } from './app.new-contact.component';
 	<h1>contact</h1>
 	<add-contact></add-contact>
 	<contacts></contacts>
+	<contact-detail></contact-detail>
 	`
 })
 

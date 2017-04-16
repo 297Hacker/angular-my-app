@@ -9,8 +9,10 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
-var app_contacts_component_1 = require("./app.contacts.component");
-var app_new_contact_component_1 = require("./app.new-contact.component");
+var contacts_component_1 = require("./contacts.component");
+var new_contact_component_1 = require("./new-contact.component");
+var contact_detail_component_1 = require("./contact-detail.component");
+var contact_service_1 = require("./contact.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,9 +22,11 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
             forms_1.FormsModule],
+        providers: [contact_service_1.ContactService],
         declarations: [app_component_1.AppComponent,
-            app_contacts_component_1.ContactsComponent,
-            app_new_contact_component_1.NewContactComponent],
+            contacts_component_1.ContactsComponent,
+            new_contact_component_1.NewContactComponent,
+            contact_detail_component_1.ContactDetailComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

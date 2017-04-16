@@ -6,16 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var contacts_1 = require("./contacts");
+var ContactService = (function () {
+    function ContactService() {
     }
-    return AppComponent;
+    ContactService.prototype.getContacts = function () {
+        return contacts_1.CONTACTS;
+    };
+    return ContactService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: "\n\t<h1>contact</h1>\n\t<add-contact></add-contact>\n\t<contacts></contacts>\n\t<contact-detail></contact-detail>\n\t"
-    })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+ContactService = __decorate([
+    core_1.Injectable()
+], ContactService);
+exports.ContactService = ContactService;
+//# sourceMappingURL=contact.service.js.map

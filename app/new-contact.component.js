@@ -28,4 +28,4 @@ NewContactComponent = __decorate([
     })
 ], NewContactComponent);
 exports.NewContactComponent = NewContactComponent;
-//# sourceMappingURL=app.new-contact.component.js.map
+//# sourceMappingURL=new-contact.component.js.map
