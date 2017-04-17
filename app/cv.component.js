@@ -6,17 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-require("./rxjs-operators");
-var AppComponent = (function () {
-    function AppComponent() {
+var CvComponent = (function () {
+    function CvComponent() {
     }
-    return AppComponent;
+    CvComponent.prototype.showMore = function () {
+        console.log('Hello Boss!');
+    };
+    return CvComponent;
 }());
-AppComponent = __decorate([
+CvComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        template: "\n\t<h1>contact meh</h1>\n\t<a routerLink=\"/home\">Home</a>\n\t<a routerLink=\"/contacts\">Contact</a>\n\t<a routerLink=\"/cv\">Cv</a>\n\t<router-outlet></router-outlet>\n\t"
+        selector: 'cv',
+        template: "\n\t\t<h1>This is my Cv</h1>\n\t\t<button type=\"submit\" (click)=\"showMore()\">Click</button>\n\t"
     })
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], CvComponent);
+exports.CvComponent = CvComponent;
+//# sourceMappingURL=cv.component.js.map

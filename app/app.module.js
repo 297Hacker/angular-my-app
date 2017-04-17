@@ -9,11 +9,15 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var http_1 = require("@angular/http");
+var in_memory_web_api_umd_js_1 = require("angular-in-memory-web-api/bundles/in-memory-web-api.umd.js");
+var in_memory_data_service_1 = require("./in-memory-data.service");
 var app_component_1 = require("./app.component");
 var contacts_component_1 = require("./contacts.component");
 var new_contact_component_1 = require("./new-contact.component");
 var contact_detail_component_1 = require("./contact-detail.component");
 var home_component_1 = require("./home.component");
+var cv_component_1 = require("./cv.component");
 var contact_service_1 = require("./contact.service");
 var AppModule = (function () {
     function AppModule() {
@@ -24,6 +28,8 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
+            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
             router_1.RouterModule.forRoot([
                 {
                     path: 'contacts/:id',
@@ -32,6 +38,10 @@ AppModule = __decorate([
                 {
                     path: 'home',
                     component: home_component_1.HomeComponent
+                },
+                {
+                    path: 'cv',
+                    component: cv_component_1.CvComponent
                 },
                 {
                     path: '',
@@ -48,7 +58,8 @@ AppModule = __decorate([
             contacts_component_1.ContactsComponent,
             new_contact_component_1.NewContactComponent,
             contact_detail_component_1.ContactDetailComponent,
-            home_component_1.HomeComponent],
+            home_component_1.HomeComponent,
+            cv_component_1.CvComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

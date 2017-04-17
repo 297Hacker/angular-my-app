@@ -10,7 +10,7 @@ import { ContactService } from './contact.service';
 	selector: 'contact-detail',
 	template: `
 		<div *ngIf="contact">
-			<h3>{{contact.name}} details</h3>
+			<h3>{{contact.name}} Details</h3>
 			<label>Name:</label>
 			<input [(ngModel)]="contact.name" placeholder="name"/>
 			<div>
@@ -38,7 +38,8 @@ export class ContactDetailComponent implements OnInit{
 	ngOnInit(): void{
 		this.route.params.forEach((params: Params) => {
 			let id = +params['id'];
-			this.contact = this.contactService.getContactDetails(id);
+			this.contactService.getContactDetails(id)
+				.then(contact => this.contact = contact)
 		})
 	}
 
