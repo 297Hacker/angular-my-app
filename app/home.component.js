@@ -41,7 +41,7 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: "\n\t\t<h2>Contact List Home Page</h2>\n\t\t<h5>Most recent added contact:{{contact?.name}}</h5>\n\t\t<button type=\"button\" (click)=\"gotoDetails(contact)\">Details</button>\n\t\t<add-contact></add-contact>\n\t"
+        template: "\n\t\t<h2>Contact List Home Page</h2>\n\t\t<h5>Most recent added contact:{{contact?.name}}</h5>\n\t\t<button type=\"button\" (click)=\"gotoDetails(contact)\">Details</button>\n\t"
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
         router_1.Router])

@@ -22,6 +22,7 @@ import { ContactService } from './contact.service';
 				<input [(ngModel)]="contact.phone" placeholder="phone"/>
 			</div>
 			<button type="button" (click)="back()">Go back</button>
+			<button type="button" (click)="update(contact)">Update</button>
 		</div>
 	`
 })
@@ -45,5 +46,10 @@ export class ContactDetailComponent implements OnInit{
 
 	back(){
 		this.location.back();
+	}
+
+	update(contact: Contact){
+		this.contactService.update(contact)
+			.then(()=> this.back())
 	}
 }

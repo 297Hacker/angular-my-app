@@ -17,6 +17,7 @@ import { ContactService } from './contact.service';
 				Name:{{contact.name}}
 			</li>
 		</ul>
+		<add-contact [contacts]="contacts"></add-contact>
 
 	`
 })

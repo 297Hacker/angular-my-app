@@ -32,6 +32,25 @@ var ContactService = (function () {
     ContactService.prototype.handleError = function (error) {
         console.error('Something went wrong', error);
     };
+    ContactService.prototype.addContact = function (contact) {
+        var body = JSON.stringify(contact);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.contactsUrl, body, options)
+            .toPromise()
+            .then(this.getData)
+            .catch(this.handleError);
+    };
+    ContactService.prototype.update = function (contact) {
+        var body = JSON.stringify(contact);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var url = this.contactsUrl + "/" + contact.id;
+        return this.http.put(url, body, options)
+            .toPromise()
+            .then(function () { return contact; })
+            .catch(this.handleError);
+    };
     return ContactService;
 }());
 ContactService = __decorate([
