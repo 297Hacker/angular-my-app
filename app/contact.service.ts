@@ -10,6 +10,7 @@ import { CONTACTS } from './contacts';
 export class ContactService{
 
 	private contactsUrl = 'app/contactslist';
+	
 
 	constructor(private http: Http){}
 
