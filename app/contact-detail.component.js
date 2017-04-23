@@ -34,12 +34,17 @@ var ContactDetailComponent = (function () {
         this.contactService.update(contact)
             .then(function () { return _this.back(); });
     };
+    ContactDetailComponent.prototype.delete = function (contact) {
+        var _this = this;
+        this.contactService.deleteContacts(contact)
+            .then(function () { return _this.back(); });
+    };
     return ContactDetailComponent;
 }());
 ContactDetailComponent = __decorate([
     core_1.Component({
         selector: 'contact-detail',
-        template: "\n\t\t<div *ngIf=\"contact\">\n\t\t\t<h3>{{contact.name}} Details</h3>\n\t\t\t<label>Name:</label>\n\t\t\t<input [(ngModel)]=\"contact.name\" placeholder=\"name\"/>\n\t\t\t<div>\n\t\t\t\t<label> Age: </label>\n\t\t\t\t<input [(ngModel)] =\"contact.age\" placeholder=\"age\"/>\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t<label> Phone Number </label>\n\t\t\t\t<input [(ngModel)]=\"contact.phone\" placeholder=\"phone\"/>\n\t\t\t</div>\n\t\t\t<button type=\"button\" (click)=\"back()\">Go back</button>\n\t\t\t<button type=\"button\" (click)=\"update(contact)\">Update</button>\n\t\t</div>\n\t"
+        template: "\n\t\t<div *ngIf=\"contact\">\n\t\t\t<h3>{{contact.name}} Details</h3>\n\t\t\t<label>Name:</label>\n\t\t\t<input [(ngModel)]=\"contact.name\" placeholder=\"name\"/>\n\t\t\t<div>\n\t\t\t\t<label> Age: </label>\n\t\t\t\t<input [(ngModel)] =\"contact.age\" placeholder=\"age\"/>\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t<label> Phone Number </label>\n\t\t\t\t<input [(ngModel)]=\"contact.phone\" placeholder=\"phone\"/>\n\t\t\t</div>\n\t\t\t<button type=\"button\" (click)=\"update(contact)\">Update</button>\n\t\t\t<button type=\"button\" (click)=\"delete(contact)\">delete</button>\n\t\t\t<button type=\"button\" (click)=\"back()\">Go back</button>\n\t\t</div>\n\t"
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
         router_1.ActivatedRoute,

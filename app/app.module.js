@@ -19,6 +19,7 @@ var contact_detail_component_1 = require("./contact-detail.component");
 var home_component_1 = require("./home.component");
 var cv_component_1 = require("./cv.component");
 var contact_service_1 = require("./contact.service");
+var contact_search_component_1 = require("./contact-search.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -59,7 +60,8 @@ AppModule = __decorate([
             new_contact_component_1.NewContactComponent,
             contact_detail_component_1.ContactDetailComponent,
             home_component_1.HomeComponent,
-            cv_component_1.CvComponent],
+            cv_component_1.CvComponent,
+            contact_search_component_1.ContactSearchComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

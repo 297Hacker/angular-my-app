@@ -10,6 +10,8 @@ import { CONTACTS } from './contacts';
 export class ContactService{
 
 	private contactsUrl = 'app/contactslist';
+	private headers = new Headers({'Content-Type': 'application/json'});
+	private options = new RequestOptions({headers: this.headers});
 	
 
 	constructor(private http: Http){}
@@ -38,9 +40,8 @@ export class ContactService{
 
 	addContact(contact): Promise<Contact>{
 		let body = JSON.stringify(contact);
-		let headers = new Headers({'Content-Type':'application/json'});
-		let options = new RequestOptions({headers: headers});
-		return this.http.post(this.contactsUrl, body, options)
+
+		return this.http.post(this.contactsUrl, body, this.options)
 			.toPromise()
 			.then(this.getData)
 			.catch(this.handleError)
@@ -48,13 +49,21 @@ export class ContactService{
 
 	update(contact): Promise<Contact>{
 		let body = JSON.stringify(contact);
-		let headers = new Headers({'Content-Type': 'application/json'});
-		let options = new RequestOptions({headers: headers});
 		let url = `${this.contactsUrl}/${contact.id}`
 
-		return this.http.put(url, body, options)
+		return this.http.put(url, body, this.options)
 			.toPromise()
 			.then(() => contact)
 			.catch(this.handleError);
 	}
+
+	deleteContacts(contact): Promise<Contact>{
+		let url = `${this.contactsUrl}/${contact.id}`
+
+		return this.http.delete(url)
+			.toPromise()
+			.then(() => null)
+			.catch(this.handleError);
+	}
+
 }

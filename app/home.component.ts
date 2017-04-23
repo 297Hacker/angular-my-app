@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Contact } from './contact';
 import { ContactService } from './contact.service';
+import { ContactSearchService } from './contact-search.service';
 
 import { Router } from '@angular/router';
 
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
 		<h2>Contact List Home Page</h2>
 		<h5>Most recent added contact:{{contact?.name}}</h5>
 		<button type="button" (click)="gotoDetails(contact)">Details</button>
-	`
+		<contact-search></contact-search>
+	`,
+	providers: [ContactSearchService]
 
 })
 

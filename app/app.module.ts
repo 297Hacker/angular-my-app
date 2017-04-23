@@ -18,6 +18,7 @@ import { HomeComponent } from './home.component';
 import { CvComponent } from './cv.component';
 
 import { ContactService } from './contact.service';
+import { ContactSearchComponent } from './contact-search.component'
 
 @NgModule({
 	imports: [ BrowserModule,
@@ -52,7 +53,8 @@ import { ContactService } from './contact.service';
 					NewContactComponent,
 					ContactDetailComponent,
 					HomeComponent,
-					CvComponent ],
+					CvComponent,
+					ContactSearchComponent ],
 	bootstrap: [ AppComponent ]
 })
 

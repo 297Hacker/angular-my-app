@@ -14,6 +14,8 @@ var ContactService = (function () {
     function ContactService(http) {
         this.http = http;
         this.contactsUrl = 'app/contactslist';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.options = new http_1.RequestOptions({ headers: this.headers });
     }
     ContactService.prototype.getContacts = function () {
         return this.http.get(this.contactsUrl)
@@ -34,21 +36,24 @@ var ContactService = (function () {
     };
     ContactService.prototype.addContact = function (contact) {
         var body = JSON.stringify(contact);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this.contactsUrl, body, options)
+        return this.http.post(this.contactsUrl, body, this.options)
             .toPromise()
             .then(this.getData)
             .catch(this.handleError);
     };
     ContactService.prototype.update = function (contact) {
         var body = JSON.stringify(contact);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
         var url = this.contactsUrl + "/" + contact.id;
-        return this.http.put(url, body, options)
+        return this.http.put(url, body, this.options)
             .toPromise()
             .then(function () { return contact; })
+            .catch(this.handleError);
+    };
+    ContactService.prototype.deleteContacts = function (contact) {
+        var url = this.contactsUrl + "/" + contact.id;
+        return this.http.delete(url)
+            .toPromise()
+            .then(function () { return null; })
             .catch(this.handleError);
     };
     return ContactService;
