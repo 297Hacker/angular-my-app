@@ -39,7 +39,10 @@ export class ContactsComponent implements OnInit{
 
 	getContacts(){
 		this.contactService.getContacts()
-			.then(contacts => this.contacts = contacts);
+			.subscribe(
+				contacts => this.contacts = contacts,
+				error => console.log(error)
+				);
 	}
 
 	selectContact(contact: Contact){

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
 var ContactService = (function () {
     function ContactService(http) {
         this.http = http;
@@ -19,13 +20,12 @@ var ContactService = (function () {
     }
     ContactService.prototype.getContacts = function () {
         return this.http.get(this.contactsUrl)
-            .toPromise()
-            .then(this.getData)
+            .map(this.getData)
             .catch(this.handleError);
     };
     ContactService.prototype.getContactDetails = function (id) {
         return this.getContacts()
-            .then(function (contacts) { return contacts.find(function (contact) { return contact.id === id; }); });
+            .map(function (contacts) { return contacts.find(function (contact) { return contact.id === id; }); });
     };
     ContactService.prototype.getData = function (res) {
         var body = res.json();
@@ -33,27 +33,25 @@ var ContactService = (function () {
     };
     ContactService.prototype.handleError = function (error) {
         console.error('Something went wrong', error);
+        return Observable_1.Observable.throw(error);
     };
     ContactService.prototype.addContact = function (contact) {
         var body = JSON.stringify(contact);
         return this.http.post(this.contactsUrl, body, this.options)
-            .toPromise()
-            .then(this.getData)
+            .map(this.getData)
             .catch(this.handleError);
     };
     ContactService.prototype.update = function (contact) {
         var body = JSON.stringify(contact);
         var url = this.contactsUrl + "/" + contact.id;
         return this.http.put(url, body, this.options)
-            .toPromise()
-            .then(function () { return contact; })
+            .map(function () { return contact; })
             .catch(this.handleError);
     };
     ContactService.prototype.deleteContacts = function (contact) {
         var url = this.contactsUrl + "/" + contact.id;
         return this.http.delete(url)
-            .toPromise()
-            .then(function () { return null; })
+            .map(function () { return null; })
             .catch(this.handleError);
     };
     return ContactService;

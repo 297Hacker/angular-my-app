@@ -41,7 +41,7 @@ export class ContactDetailComponent implements OnInit{
 		this.route.params.forEach((params: Params) => {
 			let id = +params['id'];
 			this.contactService.getContactDetails(id)
-				.then(contact => this.contact = contact)
+				.subscribe(contact => this.contact = contact)
 		})
 	}
 
@@ -51,11 +51,11 @@ export class ContactDetailComponent implements OnInit{
 
 	update(contact: Contact){
 		this.contactService.update(contact)
-			.then(()=> this.back())
+			.subscribe(()=> this.back())
 	}
 
 	delete(contact: Contact){
 		this.contactService.deleteContacts(contact)
-		.then(() => this.back())
+		.subscribe(() => this.back())
 	}
 }

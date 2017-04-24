@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable'
 
 import { Contact } from './contact';
 
@@ -17,16 +18,15 @@ export class ContactService{
 	constructor(private http: Http){}
 
 
-	getContacts(): Promise<Contact[]>{
+	getContacts(): Observable<Contact[]>{
 		return this.http.get(this.contactsUrl)
-		.toPromise()
-		.then(this.getData)
+		.map(this.getData)
 		.catch(this.handleError)
 	}
 
-	getContactDetails(id: number): Promise<Contact>{
+	getContactDetails(id: number): Observable<Contact>{
 		return this.getContacts()
-		.then(contacts => contacts.find(contact => contact.id === id))
+		.map(contacts => contacts.find(contact => contact.id === id))
 	}
 
 	getData(res: Response){
@@ -36,33 +36,31 @@ export class ContactService{
 
 	handleError(error: any){
 		console.error('Something went wrong', error);
+		return Observable.throw(error);
 	}
 
-	addContact(contact): Promise<Contact>{
+	addContact(contact): Observable<Contact>{
 		let body = JSON.stringify(contact);
 
 		return this.http.post(this.contactsUrl, body, this.options)
-			.toPromise()
-			.then(this.getData)
+			.map(this.getData)
 			.catch(this.handleError)
 	}
 
-	update(contact): Promise<Contact>{
+	update(contact): Observable<Contact>{
 		let body = JSON.stringify(contact);
 		let url = `${this.contactsUrl}/${contact.id}`
 
 		return this.http.put(url, body, this.options)
-			.toPromise()
-			.then(() => contact)
+			.map(() => contact)
 			.catch(this.handleError);
 	}
 
-	deleteContacts(contact): Promise<Contact>{
+	deleteContacts(contact): Observable<Contact>{
 		let url = `${this.contactsUrl}/${contact.id}`
 
 		return this.http.delete(url)
-			.toPromise()
-			.then(() => null)
+			.map(() => null)
 			.catch(this.handleError);
 	}
 

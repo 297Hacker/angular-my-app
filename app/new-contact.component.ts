@@ -34,7 +34,7 @@ export class NewContactComponent{
 			if(!contact){
 				return;
 			}this.contactService.addContact(contact)
-				.then(contact => this.contacts.push(contact),
+				.subscribe(contact => this.contacts.push(contact),
 					error => this.errorMessage = 'Something went wrong' + error
 					)
 

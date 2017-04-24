@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit{
 
 	getNewest(){
 		this.contactService.getContacts()
-		.then(contacts => this.contact = contacts
-			.reduce(function(previous, current){
+		.subscribe(contacts => this.contact = contacts
+			.reduce((previous, current){
 				if ( current.id > previous.id) {
 					return current
 				} else{
