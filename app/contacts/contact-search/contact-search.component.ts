@@ -8,7 +8,8 @@ import { Subject } from 'rxjs/Subject';
 @Component({
 	moduleId: module.id,
 	selector: 'contact-search',
-	templateUrl: 'contact-search.component.html'
+	templateUrl: 'contact-search.component.html',
+	styleUrls: ['contact-search.component.css']
 })
 
 export class ContactSearchComponent implements OnInit {

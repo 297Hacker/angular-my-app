@@ -1,5 +1,5 @@
 //form to add new contact
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Contact } from '../shared/contact-model';
 import { ContactService } from '../shared/contact.service';
@@ -7,21 +7,27 @@ import { ContactService } from '../shared/contact.service';
 @Component({
 	moduleId: module.id,
 	selector: 'add-contact',
-	templateUrl: 'new-contact.component.html'
+	templateUrl: 'new-contact.component.html',
+	styleUrls: ['new-contact.component.css']
 })
 
-export class NewContactComponent{
+export class NewContactComponent implements OnInit{
 	@Input() contacts : Contact[];
 
-	errorMessage = null;
+	errorMessage: string;
+	confirmation: boolean;
+	newContact;
 
-	newContact = {name: '', age: '', phone: ''}
-
-	clear(){
-		this.newContact =  { name: '', age: '', phone: ''}
+	ngOnInit():void{
+		this.setForm();
 	}
 
-	confirmation = true;
+	setForm():void{
+		this.confirmation = true;
+		this.errorMessage = null;
+		this.newContact= {};
+	}
+
 
 	confirm(){
 		this.confirmation = false;
@@ -34,7 +40,9 @@ export class NewContactComponent{
 			if(!contact){
 				return;
 			}this.contactService.addContact(contact)
-				.subscribe(contact => this.contacts.push(contact),
+				.subscribe(contact => {this.contacts.push(contact);
+										this.setForm();
+									},
 					error => this.errorMessage = 'Something went wrong' + error
 					)
 

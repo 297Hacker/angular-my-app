@@ -1,4 +1,4 @@
-<div *ngIf="contact">
+<div class="container" *ngIf="contact">
 			<h3>{{contact.name}} Details</h3>
 			<label>Name:</label>
 			<input [(ngModel)]="contact.name" placeholder="name"/>
@@ -10,7 +10,7 @@
 				<label> Phone Number </label>
 				<input [(ngModel)]="contact.phone" placeholder="phone"/>
 			</div>
-			<button type="button" (click)="update(contact)">Update</button>
-			<button type="button" (click)="delete(contact)">delete</button>
-			<button type="button" (click)="back()">Go back</button>
+			<button class="btn-large waves-effect waves-light red" type="button" (click)="update(contact)">Update</button>
+			<button class="btn-large waves-effect waves-light blue" type="button" (click)="delete(contact)">delete</button>
+			<button class="btn-large waves-effect waves-light green" type="button" (click)="back()">Go back</button>
 </div>

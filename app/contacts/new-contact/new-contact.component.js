@@ -14,12 +14,14 @@ var contact_service_1 = require("../shared/contact.service");
 var NewContactComponent = (function () {
     function NewContactComponent(contactService) {
         this.contactService = contactService;
-        this.errorMessage = null;
-        this.newContact = { name: '', age: '', phone: '' };
-        this.confirmation = true;
     }
-    NewContactComponent.prototype.clear = function () {
-        this.newContact = { name: '', age: '', phone: '' };
+    NewContactComponent.prototype.ngOnInit = function () {
+        this.setForm();
+    };
+    NewContactComponent.prototype.setForm = function () {
+        this.confirmation = true;
+        this.errorMessage = null;
+        this.newContact = {};
     };
     NewContactComponent.prototype.confirm = function () {
         this.confirmation = false;
@@ -30,7 +32,10 @@ var NewContactComponent = (function () {
             return;
         }
         this.contactService.addContact(contact)
-            .subscribe(function (contact) { return _this.contacts.push(contact); }, function (error) { return _this.errorMessage = 'Something went wrong' + error; });
+            .subscribe(function (contact) {
+            _this.contacts.push(contact);
+            _this.setForm();
+        }, function (error) { return _this.errorMessage = 'Something went wrong' + error; });
     };
     return NewContactComponent;
 }());
@@ -42,7 +47,8 @@ NewContactComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'add-contact',
-        templateUrl: 'new-contact.component.html'
+        templateUrl: 'new-contact.component.html',
+        styleUrls: ['new-contact.component.css']
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService])
 ], NewContactComponent);

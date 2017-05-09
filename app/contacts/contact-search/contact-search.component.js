@@ -45,7 +45,8 @@ ContactSearchComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'contact-search',
-        templateUrl: 'contact-search.component.html'
+        templateUrl: 'contact-search.component.html',
+        styleUrls: ['contact-search.component.css']
     }),
     __metadata("design:paramtypes", [contact_search_service_1.ContactSearchService,
         router_1.Router])
