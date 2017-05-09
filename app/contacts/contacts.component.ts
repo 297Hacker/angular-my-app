@@ -3,23 +3,15 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Contact } from './contact';
+import { Contact } from './shared/contact-model';
 
-import { ContactService } from './contact.service';
+import { ContactService } from './shared/contact.service';
 
 @Component({
+	moduleId: module.id,
 	selector: 'contacts',
-	template:
-	`
-		<h2>Contact List</h2>
-		<ul class="contacts">
-			<li *ngFor="let contact of contacts" (click)="selectContact(contact)">
-				Name:{{contact.name}}
-			</li>
-		</ul>
-		<add-contact [contacts]="contacts"></add-contact>
-
-	`
+	templateUrl: 'contacts.component.html',
+	styleUrls: ['contacts.component.css']
 })
 
 export class ContactsComponent implements OnInit{

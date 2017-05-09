@@ -4,8 +4,6 @@ import { Observable } from 'rxjs/Observable'
 
 import { Contact } from './contact';
 
-import { CONTACTS } from './contacts';
-
 @Injectable()
 
 export class ContactService{

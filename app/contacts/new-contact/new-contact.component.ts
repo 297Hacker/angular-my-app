@@ -1,8 +1,8 @@
 //form to add new contact
 import { Component, Input } from '@angular/core';
 
-import { Contact } from './contact';
-import { ContactService } from './contact.service';
+import { Contact } from '../shared/contact-model';
+import { ContactService } from '../shared/contact.service';
 
 @Component({
 	moduleId: module.id,

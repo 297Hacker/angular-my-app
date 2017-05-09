@@ -1,0 +1,10 @@
+		<div>
+			<h2>Search Contact</h2>
+			<input #term type="text" (keyup)="search(term.value)"/>
+			<ul>
+				<li *ngFor="let contact of contacts | async"
+				(click)="selectContact(contact)">
+				{{contact.name}}
+				</li>
+			</ul>
+		</div>

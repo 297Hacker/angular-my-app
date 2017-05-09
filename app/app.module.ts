@@ -11,14 +11,14 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api/bundles/in-memor
 import { InMemoryDataService} from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts.component';
-import { NewContactComponent } from './new-contact.component';
-import { ContactDetailComponent } from './contact-detail.component';
-import { HomeComponent } from './home.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { NewContactComponent } from './contacts/new-contact/new-contact.component';
+import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
+import { HomeComponent } from './contacts/home/home.component';
 import { CvComponent } from './cv.component';
 
-import { ContactService } from './contact.service';
-import { ContactSearchComponent } from './contact-search.component'
+import { ContactService } from './contacts/shared/contact.service';
+import { ContactSearchComponent } from './contacts/contact-search/contact-search.component'
 
 @NgModule({
 	imports: [ BrowserModule,

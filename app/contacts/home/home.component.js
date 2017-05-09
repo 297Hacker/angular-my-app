@@ -9,8 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var contact_service_1 = require("./contact.service");
-var contact_search_service_1 = require("./contact-search.service");
+var contact_service_1 = require("../shared/contact.service");
+var contact_search_service_1 = require("../shared/contact-search.service");
 var router_1 = require("@angular/router");
 var HomeComponent = (function () {
     function HomeComponent(contactService, router) {
@@ -41,8 +41,9 @@ var HomeComponent = (function () {
 }());
 HomeComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'home',
-        template: "\n\t\t<h2>Contact List Home Page</h2>\n\t\t<h5>Most recent added contact:{{contact?.name}}</h5>\n\t\t<button type=\"button\" (click)=\"gotoDetails(contact)\">Details</button>\n\t\t<contact-search></contact-search>\n\t",
+        templateUrl: 'home.component.html',
         providers: [contact_search_service_1.ContactSearchService]
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,

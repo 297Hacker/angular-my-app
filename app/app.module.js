@@ -13,13 +13,13 @@ var http_1 = require("@angular/http");
 var in_memory_web_api_umd_js_1 = require("angular-in-memory-web-api/bundles/in-memory-web-api.umd.js");
 var in_memory_data_service_1 = require("./in-memory-data.service");
 var app_component_1 = require("./app.component");
-var contacts_component_1 = require("./contacts.component");
-var new_contact_component_1 = require("./new-contact.component");
-var contact_detail_component_1 = require("./contact-detail.component");
-var home_component_1 = require("./home.component");
+var contacts_component_1 = require("./contacts/contacts.component");
+var new_contact_component_1 = require("./contacts/new-contact/new-contact.component");
+var contact_detail_component_1 = require("./contacts/contact-detail/contact-detail.component");
+var home_component_1 = require("./contacts/home/home.component");
 var cv_component_1 = require("./cv.component");
-var contact_service_1 = require("./contact.service");
-var contact_search_component_1 = require("./contact-search.component");
+var contact_service_1 = require("./contacts/shared/contact.service");
+var contact_search_component_1 = require("./contacts/contact-search/contact-search.component");
 var AppModule = (function () {
     function AppModule() {
     }

@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
-var contact_service_1 = require("./contact.service");
+var contact_service_1 = require("../shared/contact.service");
 var ContactDetailComponent = (function () {
     function ContactDetailComponent(contactService, route, location) {
         this.contactService = contactService;
@@ -43,8 +43,9 @@ var ContactDetailComponent = (function () {
 }());
 ContactDetailComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'contact-detail',
-        template: "\n\t\t<div *ngIf=\"contact\">\n\t\t\t<h3>{{contact.name}} Details</h3>\n\t\t\t<label>Name:</label>\n\t\t\t<input [(ngModel)]=\"contact.name\" placeholder=\"name\"/>\n\t\t\t<div>\n\t\t\t\t<label> Age: </label>\n\t\t\t\t<input [(ngModel)] =\"contact.age\" placeholder=\"age\"/>\n\t\t\t</div>\n\t\t\t<div>\n\t\t\t\t<label> Phone Number </label>\n\t\t\t\t<input [(ngModel)]=\"contact.phone\" placeholder=\"phone\"/>\n\t\t\t</div>\n\t\t\t<button type=\"button\" (click)=\"update(contact)\">Update</button>\n\t\t\t<button type=\"button\" (click)=\"delete(contact)\">delete</button>\n\t\t\t<button type=\"button\" (click)=\"back()\">Go back</button>\n\t\t</div>\n\t"
+        templateUrl: 'contact-detail.component.html'
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
         router_1.ActivatedRoute,

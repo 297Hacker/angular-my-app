@@ -5,4 +5,4 @@ var Contact = (function () {
     return Contact;
 }());
 exports.Contact = Contact;
-//# sourceMappingURL=contact.js.map
+//# sourceMappingURL=contact-model.js.map

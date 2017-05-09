@@ -10,16 +10,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var contact_search_service_1 = require("./contact-search.service");
+var contact_search_service_1 = require("../shared/contact-search.service");
+var Observable_1 = require("rxjs/Observable");
+var Subject_1 = require("rxjs/Subject");
 var ContactSearchComponent = (function () {
     function ContactSearchComponent(contactSearchService, router) {
         this.contactSearchService = contactSearchService;
         this.router = router;
+        this.searchTermStream = new Subject_1.Subject();
     }
     ContactSearchComponent.prototype.search = function (term) {
+        this.searchTermStream.next(term);
+    };
+    ContactSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.contactSearchService.search(term)
-            .then(function (contacts) { return _this.contacts = contacts; });
+        this.contacts = this.searchTermStream
+            .debounceTime(500)
+            .distinctUntilChanged()
+            .switchMap(function (term) { return term
+            ? _this.contactSearchService.search(term)
+            : Observable_1.Observable.of([]); })
+            .catch(function (error) {
+            console.log(error);
+            return Observable_1.Observable.of([]);
+        });
     };
     ContactSearchComponent.prototype.selectContact = function (contact) {
         var link = ['./contacts', contact.id];
@@ -29,8 +43,9 @@ var ContactSearchComponent = (function () {
 }());
 ContactSearchComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'contact-search',
-        template: "\n\t\t<div>\n\t\t\t<h2>Search Contact</h2>\n\t\t\t<input #term type=\"text\" (keyup)=\"search(term.value)\"/>\n\t\t\t<ul>\n\t\t\t\t<li *ngFor=\"let contact of contacts\"\n\t\t\t\t(click)=\"selectContact(contact)\">\n\t\t\t\t{{contact.name}}\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</div>\n\t"
+        templateUrl: 'contact-search.component.html'
     }),
     __metadata("design:paramtypes", [contact_search_service_1.ContactSearchService,
         router_1.Router])

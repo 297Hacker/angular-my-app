@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 //form to add new contact
 var core_1 = require("@angular/core");
-var contact_service_1 = require("./contact.service");
+var contact_service_1 = require("../shared/contact.service");
 var NewContactComponent = (function () {
     function NewContactComponent(contactService) {
         this.contactService = contactService;

@@ -16,8 +16,7 @@ var ContactSearchService = (function () {
     }
     ContactSearchService.prototype.search = function (term) {
         return this.http.get("app/contactslist/?name=" + term)
-            .toPromise()
-            .then(function (response) { return response.json().data; });
+            .map(function (response) { return response.json().data; });
     };
     return ContactSearchService;
 }());

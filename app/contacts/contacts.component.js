@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 // import { CONTACTS } from './contacts';
 var router_1 = require("@angular/router");
-var contact_service_1 = require("./contact.service");
+var contact_service_1 = require("./shared/contact.service");
 var ContactsComponent = (function () {
     function ContactsComponent(contactService, router) {
         this.contactService = contactService;
@@ -33,8 +33,10 @@ var ContactsComponent = (function () {
 }());
 ContactsComponent = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: 'contacts',
-        template: "\n\t\t<h2>Contact List</h2>\n\t\t<ul class=\"contacts\">\n\t\t\t<li *ngFor=\"let contact of contacts\" (click)=\"selectContact(contact)\">\n\t\t\t\tName:{{contact.name}}\n\t\t\t</li>\n\t\t</ul>\n\t\t<add-contact [contacts]=\"contacts\"></add-contact>\n\n\t"
+        templateUrl: 'contacts.component.html',
+        styleUrls: ['contacts.component.css']
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
         router_1.Router])
