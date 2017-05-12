@@ -27,16 +27,9 @@ export class HomeComponent implements OnInit{
 	}
 
 	getNewest(){
-		this.contactService.getContacts()
-		.subscribe(contacts => this.contact = contacts
-			.reduce((previous, current){
-				if ( current.id > previous.id) {
-					return current
-				} else{
-					return previous;
-				}
-			})
-		)
+		this.contactService.getNewest()
+		.subscribe(contact => this.contact = contact)
+		
 	}
 
 	gotoDetails(contact: Contact){

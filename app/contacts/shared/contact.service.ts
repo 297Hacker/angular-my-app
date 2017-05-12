@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable'
 
-import { Contact } from './contact';
+import { Contact } from './contact-model';
 
 @Injectable()
 
@@ -25,6 +25,11 @@ export class ContactService{
 	getContactDetails(id: number): Observable<Contact>{
 		return this.getContacts()
 		.map(contacts => contacts.find(contact => contact.id === id))
+	}
+
+	getNewest(): Observable<Contact>{
+		return this.getContacts()
+		.map(contacts => contacts[contacts.length-1])
 	}
 
 	getData(res: Response){

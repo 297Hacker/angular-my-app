@@ -2,14 +2,37 @@
 		<div class="nav-wrapper">
 			<a class="brand-logo right" routerLink="/home">My Contacts</a>
 			<ul class="left">
-				<li><a routerLink="/home">Home</a></li>
-				<li><a routerLink="/contacts">Contacts</a></li>
+				<li [routerLinkActive]="['active']"><a routerLink="/home">Home</a></li>
+				<li [routerLinkActive]="['active']"><a routerLink="/contacts">Contacts</a></li>
 			</ul>
 		</div>
 	</nav>
 
-	<h1>contact meh</h1>
-	<a routerLink="/home">Home</a>
-	<a routerLink="/contacts">Contact</a>
-	<a routerLink="/cv">Cv</a>
 	<router-outlet></router-outlet>
+
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+			<div class="col l6 s12">
+				<h5 class="white-text">
+				Lorem ipsum
+				</h5>
+				<p></p>
+			</div>
+			<div class="col l4 offset-l2 s12">
+				<h5 class="white-text">Links
+				</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-4" href="#">My portfolio</a></li>
+						<li><a class="grey-text text-lighten-4" href="#">Github</a></li>
+					</ul>
+			</div>
+		</div>
+		<div class="footer-copyright">
+				<div class="container">
+				Copyright 2017
+					<a class="grey-text"  href="#">Another Link</a>
+				</div>
+			</div>
+		</div>
+	</footer>

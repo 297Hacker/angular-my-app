@@ -22,16 +22,8 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.getNewest = function () {
         var _this = this;
-        this.contactService.getContacts()
-            .subscribe(function (contacts) { return _this.contact = contacts
-            .reduce(function (previous, current) {
-            if (current.id > previous.id) {
-                return current;
-            }
-            else {
-                return previous;
-            }
-        }); });
+        this.contactService.getNewest()
+            .subscribe(function (contact) { return _this.contact = contact; });
     };
     HomeComponent.prototype.gotoDetails = function (contact) {
         var link = ['/contacts', contact.id];

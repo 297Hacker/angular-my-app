@@ -27,6 +27,10 @@ var ContactService = (function () {
         return this.getContacts()
             .map(function (contacts) { return contacts.find(function (contact) { return contact.id === id; }); });
     };
+    ContactService.prototype.getNewest = function () {
+        return this.getContacts()
+            .map(function (contacts) { return contacts[contacts.length - 1]; });
+    };
     ContactService.prototype.getData = function (res) {
         var body = res.json();
         return body.data || {};
