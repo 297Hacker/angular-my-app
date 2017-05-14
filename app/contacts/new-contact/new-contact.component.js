@@ -47,6 +47,18 @@ NewContactComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'add-contact',
+        animations: [
+            core_1.trigger('bringUpMenu', [
+                core_1.state('active', core_1.style({ transform: 'translateY(0)' })),
+                core_1.transition('void => *', [
+                    core_1.style({ transform: 'translateY(100%)' }),
+                    core_1.animate(500)
+                ]),
+                core_1.transition('* => void', [
+                    core_1.animate(500, core_1.style({ transform: 'translateX(100%)' }))
+                ])
+            ])
+        ],
         templateUrl: 'new-contact.component.html',
         styleUrls: ['new-contact.component.css']
     }),
