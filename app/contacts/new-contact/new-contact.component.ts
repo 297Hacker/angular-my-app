@@ -1,5 +1,5 @@
 //form to add new contact
-import { Component, Input, OnInit,
+import { Component, Input, OnInit, 
 trigger,
 state,
 style,
