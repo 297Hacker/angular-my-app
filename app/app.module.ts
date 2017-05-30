@@ -20,6 +20,8 @@ import { CvComponent } from './cv.component';
 import { ContactService } from './contacts/shared/contact.service';
 import { ContactSearchComponent } from './contacts/contact-search/contact-search.component'
 
+import { SearchBarDirective } from './contacts/directives/searchbar.directive';
+
 @NgModule({
 	imports: [ BrowserModule,
 				FormsModule,
@@ -54,7 +56,8 @@ import { ContactSearchComponent } from './contacts/contact-search/contact-search
 					ContactDetailComponent,
 					HomeComponent,
 					CvComponent,
-					ContactSearchComponent ],
+					ContactSearchComponent,
+					SearchBarDirective ],
 	bootstrap: [ AppComponent ]
 })
 

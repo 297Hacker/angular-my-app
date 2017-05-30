@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
@@ -47,9 +48,8 @@ ContactDetailComponent = __decorate([
         selector: 'contact-detail',
         templateUrl: 'contact-detail.component.html'
     }),
-    __metadata("design:paramtypes", [contact_service_1.ContactService,
-        router_1.ActivatedRoute,
-        common_1.Location])
+    __metadata("design:paramtypes", [contact_service_1.ContactService, typeof (_a = typeof router_1.ActivatedRoute !== "undefined" && router_1.ActivatedRoute) === "function" && _a || Object, typeof (_b = typeof common_1.Location !== "undefined" && common_1.Location) === "function" && _b || Object])
 ], ContactDetailComponent);
 exports.ContactDetailComponent = ContactDetailComponent;
+var _a, _b;
 //# sourceMappingURL=contact-detail.component.js.map

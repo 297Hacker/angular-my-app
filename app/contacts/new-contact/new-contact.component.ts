@@ -1,5 +1,5 @@
 //form to add new contact
-import { Component, Input, OnInit,
+import { Component, Input, OnInit, 
 trigger,
 state,
 style,
@@ -23,7 +23,13 @@ import { ContactService } from '../shared/contact.service';
 			transition('* => void', [
 				animate(500, style({transform: 'translateX(100%)'}))
 				])
-			])
+			]),
+			trigger('growButton', [
+				state('inactive', style({transform: 'scale(1)'})),
+				state('active', style({transform: 'scale(1.5)'})),
+				transition('active => inactive', animate('300ms ease-in')),
+				transition('inactive => active', animate('300ms ease-out'))
+				])
 		],
 	templateUrl: 'new-contact.component.html',
 	styleUrls: ['new-contact.component.css']
@@ -35,6 +41,17 @@ export class NewContactComponent implements OnInit{
 	errorMessage: string;
 	confirmation: boolean;
 	newContact;
+	show:boolean = false;
+
+	buttonState: string = 'inactive';
+	
+	growButton(): void{
+		this.buttonState = 'active';
+	}
+
+	shrinkButton(): void{
+		this.buttonState = 'inactive';
+	}
 
 	ngOnInit():void{
 		this.setForm();

@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 // import { CONTACTS } from './contacts';
 var router_1 = require("@angular/router");
@@ -38,8 +39,8 @@ ContactsComponent = __decorate([
         templateUrl: 'contacts.component.html',
         styleUrls: ['contacts.component.css']
     }),
-    __metadata("design:paramtypes", [contact_service_1.ContactService,
-        router_1.Router])
+    __metadata("design:paramtypes", [contact_service_1.ContactService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
 ], ContactsComponent);
 exports.ContactsComponent = ContactsComponent;
+var _a;
 //# sourceMappingURL=contacts.component.js.map

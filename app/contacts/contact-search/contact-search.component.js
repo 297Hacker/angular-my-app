@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var contact_search_service_1 = require("../shared/contact-search.service");
@@ -48,8 +49,8 @@ ContactSearchComponent = __decorate([
         templateUrl: 'contact-search.component.html',
         styleUrls: ['contact-search.component.css']
     }),
-    __metadata("design:paramtypes", [contact_search_service_1.ContactSearchService,
-        router_1.Router])
+    __metadata("design:paramtypes", [contact_search_service_1.ContactSearchService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
 ], ContactSearchComponent);
 exports.ContactSearchComponent = ContactSearchComponent;
+var _a;
 //# sourceMappingURL=contact-search.component.js.map
