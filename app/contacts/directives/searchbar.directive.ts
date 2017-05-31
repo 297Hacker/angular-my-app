@@ -8,7 +8,6 @@ import { Directive, ElementRef, HostListener, Renderer, OnInit } from '@angular/
 export class SearchBarDirective implements OnInit {
 	constructor(private el: ElementRef, private renderer: Renderer){}
 
-
 		private changeWidth(newWidth: string){
 			this.renderer.setElementStyle(this.el.nativeElement, 'width', newWidth)
 		}
@@ -18,11 +17,11 @@ export class SearchBarDirective implements OnInit {
 		}
 
 		setInitialWidth(): void{
-			this.renderer.setElementStyle(this.el.nativeElement, 'width', '50px')
+			this.renderer.setElementStyle(this.el.nativeElement, 'width', '250px')
 		}
 
-		@HostListener('click') onMouseClick(){
-			this.changeWidth('100px');
+		@HostListener('click') onMouseClick(): void{
+			this.changeWidth('500px');
 		}
 
 		@HostListener('blur') onLoseFocus(): void{

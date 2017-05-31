@@ -49,8 +49,8 @@ ContactSearchComponent = __decorate([
         templateUrl: 'contact-search.component.html',
         styleUrls: ['contact-search.component.css']
     }),
-    __metadata("design:paramtypes", [contact_search_service_1.ContactSearchService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+    __metadata("design:paramtypes", [contact_search_service_1.ContactSearchService,
+        router_1.Router])
 ], ContactSearchComponent);
 exports.ContactSearchComponent = ContactSearchComponent;
-var _a;
 //# sourceMappingURL=contact-search.component.js.map

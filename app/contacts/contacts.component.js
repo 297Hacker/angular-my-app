@@ -39,8 +39,8 @@ ContactsComponent = __decorate([
         templateUrl: 'contacts.component.html',
         styleUrls: ['contacts.component.css']
     }),
-    __metadata("design:paramtypes", [contact_service_1.ContactService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+    __metadata("design:paramtypes", [contact_service_1.ContactService,
+        router_1.Router])
 ], ContactsComponent);
 exports.ContactsComponent = ContactsComponent;
-var _a;
 //# sourceMappingURL=contacts.component.js.map

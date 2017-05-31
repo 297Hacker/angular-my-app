@@ -15,7 +15,15 @@ var contact_service_1 = require("../shared/contact.service");
 var NewContactComponent = (function () {
     function NewContactComponent(contactService) {
         this.contactService = contactService;
+        this.show = false;
+        this.buttonState = 'inactive';
     }
+    NewContactComponent.prototype.growButton = function () {
+        this.buttonState = 'active';
+    };
+    NewContactComponent.prototype.shrinkButton = function () {
+        this.buttonState = 'inactive';
+    };
     NewContactComponent.prototype.ngOnInit = function () {
         this.setForm();
     };
@@ -58,6 +66,12 @@ NewContactComponent = __decorate([
                 core_1.transition('* => void', [
                     core_1.animate(500, core_1.style({ transform: 'translateX(100%)' }))
                 ])
+            ]),
+            core_1.trigger('growButton', [
+                core_1.state('inactive', core_1.style({ transform: 'scale(1)' })),
+                core_1.state('active', core_1.style({ transform: 'scale(1.5)' })),
+                core_1.transition('active => inactive', core_1.animate('300ms ease-in')),
+                core_1.transition('inactive => active', core_1.animate('300ms ease-out'))
             ])
         ],
         templateUrl: 'new-contact.component.html',

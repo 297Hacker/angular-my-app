@@ -21,6 +21,7 @@ var home_component_1 = require("./contacts/home/home.component");
 var cv_component_1 = require("./cv.component");
 var contact_service_1 = require("./contacts/shared/contact.service");
 var contact_search_component_1 = require("./contacts/contact-search/contact-search.component");
+var searchbar_directive_1 = require("./contacts/directives/searchbar.directive");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -62,7 +63,8 @@ AppModule = __decorate([
             contact_detail_component_1.ContactDetailComponent,
             home_component_1.HomeComponent,
             cv_component_1.CvComponent,
-            contact_search_component_1.ContactSearchComponent],
+            contact_search_component_1.ContactSearchComponent,
+            searchbar_directive_1.SearchBarDirective],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

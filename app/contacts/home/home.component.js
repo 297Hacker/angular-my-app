@@ -39,8 +39,8 @@ HomeComponent = __decorate([
         templateUrl: 'home.component.html',
         providers: [contact_search_service_1.ContactSearchService]
     }),
-    __metadata("design:paramtypes", [contact_service_1.ContactService, typeof (_a = typeof router_1.Router !== "undefined" && router_1.Router) === "function" && _a || Object])
+    __metadata("design:paramtypes", [contact_service_1.ContactService,
+        router_1.Router])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
-var _a;
 //# sourceMappingURL=home.component.js.map
