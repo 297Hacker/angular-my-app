@@ -23,8 +23,7 @@ var HoverDirective = (function () {
         this.hoverChange(newColor);
     };
     HoverDirective.prototype.offHover = function () {
-        var newColor = '#455a64';
-        this.hoverChange(newColor);
+        this.hoverChange(null);
     };
     HoverDirective.prototype.colorRandomizer = function () {
         var letters = '0123456789ABCDEF';

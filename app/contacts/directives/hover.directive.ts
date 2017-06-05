@@ -21,8 +21,7 @@ export class HoverDirective {
 	}
 
 	@HostListener('mouseleave') offHover(): void{
-		let newColor = '#455a64';
-		this.hoverChange(newColor);
+		this.hoverChange(null);
 	}
 
 	colorRandomizer(){

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 	moduleId: module.id,
 	selector: 'home',
 	templateUrl: 'home.component.html',
+	styles:[` .card{
+		background: #1565c0`],
 	providers: [ContactSearchService]
 
 })

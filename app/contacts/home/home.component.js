@@ -37,6 +37,7 @@ HomeComponent = __decorate([
         moduleId: module.id,
         selector: 'home',
         templateUrl: 'home.component.html',
+        styles: [" .card{\n\t\tbackground: #1565c0"],
         providers: [contact_search_service_1.ContactSearchService]
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
