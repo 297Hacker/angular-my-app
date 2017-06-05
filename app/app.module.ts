@@ -21,6 +21,7 @@ import { ContactService } from './contacts/shared/contact.service';
 import { ContactSearchComponent } from './contacts/contact-search/contact-search.component'
 
 import { SearchBarDirective } from './contacts/directives/searchbar.directive';
+import { HoverDirective } from './contacts/directives/hover.directive';
 
 @NgModule({
 	imports: [ BrowserModule,
@@ -57,7 +58,8 @@ import { SearchBarDirective } from './contacts/directives/searchbar.directive';
 					HomeComponent,
 					CvComponent,
 					ContactSearchComponent,
-					SearchBarDirective ],
+					SearchBarDirective,
+					HoverDirective ],
 	bootstrap: [ AppComponent ]
 })
 

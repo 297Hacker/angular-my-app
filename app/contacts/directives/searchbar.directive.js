@@ -48,8 +48,7 @@ SearchBarDirective = __decorate([
     core_1.Directive({
         selector: '[mySearchBar]'
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object, core_1.Renderer])
+    __metadata("design:paramtypes", [core_1.ElementRef, core_1.Renderer])
 ], SearchBarDirective);
 exports.SearchBarDirective = SearchBarDirective;
-var _a;
 //# sourceMappingURL=searchbar.directive.js.map
