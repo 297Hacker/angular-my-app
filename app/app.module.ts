@@ -23,6 +23,9 @@ import { ContactSearchComponent } from './contacts/contact-search/contact-search
 import { SearchBarDirective } from './contacts/directives/searchbar.directive';
 import { HoverDirective } from './contacts/directives/hover.directive';
 
+import { CapitalizerPipe } from './contacts/pipes/capitalizer.pipe';
+import { AlphabetizerPipe } from './contacts/pipes/alphabetizer.pipe';
+
 @NgModule({
 	imports: [ BrowserModule,
 				FormsModule,
@@ -59,7 +62,9 @@ import { HoverDirective } from './contacts/directives/hover.directive';
 					CvComponent,
 					ContactSearchComponent,
 					SearchBarDirective,
-					HoverDirective ],
+					CapitalizerPipe,
+					HoverDirective,
+					AlphabetizerPipe ],
 	bootstrap: [ AppComponent ]
 })
 

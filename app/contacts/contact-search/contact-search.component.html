@@ -8,7 +8,7 @@
 				<input mySearchBar #term type="text" (keyup)="search(term.value)"/>
 			</div>
 			<div class="card-action">
-				<li class="search-results white-text" *ngFor="let contact of contacts | async"
+				<li class="search-results white-text" *ngFor="let contact of contacts | alphabetical"
 				(click)="selectContact(contact)">
 				{{contact.name}}
 				</li>
