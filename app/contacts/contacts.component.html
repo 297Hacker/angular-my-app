@@ -1,6 +1,9 @@
 <h2 class="center-align">Contact List</h2>
 <div class="row">
-	<div class="list col s12 m6" *ngFor="let contact of contacts | alphabetical" (click)="selectContact(contact)">
+<div class="container center-align">
+	<input #nameFilter myInput placeholder="Filter by name" (keyup) ="0">
+</div>
+	<div class="list col s12 m6" *ngFor="let contact of contacts | alphabetical | filterable: nameFilter.value " (click)="selectContact(contact)">
 	<div myHover class="names card-panel hoverable">
 		<span class="white-text">{{contact.name | capitalizer}}</span>
 	</div>

@@ -46,7 +46,7 @@ __decorate([
 ], SearchBarDirective.prototype, "onLoseFocus", null);
 SearchBarDirective = __decorate([
     core_1.Directive({
-        selector: '[mySearchBar]'
+        selector: '[myInput]'
     }),
     __metadata("design:paramtypes", [core_1.ElementRef, core_1.Renderer])
 ], SearchBarDirective);

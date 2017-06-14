@@ -5,10 +5,10 @@
 				<span class="card-titel">
 					Search Contacts
 				</span><br>
-				<input mySearchBar #term type="text" (keyup)="search(term.value)"/>
+				<input myInput #term type="text" (keyup)="search(term.value)"/>
 			</div>
 			<div class="card-action">
-				<li class="search-results white-text" *ngFor="let contact of contacts | alphabetical"
+				<li class="search-results white-text" *ngFor="let contact of contacts | async | alphabetical"
 				(click)="selectContact(contact)">
 				{{contact.name}}
 				</li>

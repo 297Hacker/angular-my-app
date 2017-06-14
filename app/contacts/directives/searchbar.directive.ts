@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Renderer, OnInit } from '@angular/core';
 
 @Directive({
-	selector: '[mySearchBar]'
+	selector: '[myInput]'
 
 })
 

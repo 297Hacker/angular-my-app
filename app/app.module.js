@@ -25,6 +25,7 @@ var searchbar_directive_1 = require("./contacts/directives/searchbar.directive")
 var hover_directive_1 = require("./contacts/directives/hover.directive");
 var capitalizer_pipe_1 = require("./contacts/pipes/capitalizer.pipe");
 var alphabetizer_pipe_1 = require("./contacts/pipes/alphabetizer.pipe");
+var name_filter_pipe_1 = require("./contacts/pipes/name-filter.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,7 +36,7 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService),
+            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 0 }),
             router_1.RouterModule.forRoot([
                 {
                     path: 'contacts/:id',
@@ -70,7 +71,8 @@ AppModule = __decorate([
             searchbar_directive_1.SearchBarDirective,
             capitalizer_pipe_1.CapitalizerPipe,
             hover_directive_1.HoverDirective,
-            alphabetizer_pipe_1.AlphabetizerPipe],
+            alphabetizer_pipe_1.AlphabetizerPipe,
+            name_filter_pipe_1.NameFilterPipe],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

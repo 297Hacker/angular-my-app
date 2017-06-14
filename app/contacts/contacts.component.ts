@@ -42,4 +42,5 @@ export class ContactsComponent implements OnInit{
 		this.router.navigate(link)
 
 	}
+
 }

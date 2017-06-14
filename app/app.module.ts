@@ -25,12 +25,13 @@ import { HoverDirective } from './contacts/directives/hover.directive';
 
 import { CapitalizerPipe } from './contacts/pipes/capitalizer.pipe';
 import { AlphabetizerPipe } from './contacts/pipes/alphabetizer.pipe';
+import { NameFilterPipe } from './contacts/pipes/name-filter.pipe';
 
 @NgModule({
 	imports: [ BrowserModule,
 				FormsModule,
 				HttpModule,
-				InMemoryWebApiModule.forRoot(InMemoryDataService),
+				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 0}),
 				RouterModule.forRoot([
 					{
 						path: 'contacts/:id',
@@ -64,7 +65,8 @@ import { AlphabetizerPipe } from './contacts/pipes/alphabetizer.pipe';
 					SearchBarDirective,
 					CapitalizerPipe,
 					HoverDirective,
-					AlphabetizerPipe ],
+					AlphabetizerPipe,
+					NameFilterPipe ],
 	bootstrap: [ AppComponent ]
 })
 

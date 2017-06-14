@@ -6,22 +6,22 @@
 <div #newContactInput *ngIf = "showNew" [@bringUpMenu]="newContactInput.state">
 	<div class="container" [hidden]="!confirmation">
 		<h3 class="center-align">Add Contacts</h3>
-		<form (ngSubmit)="confirm()">
+		<form class="center-align" (ngSubmit)="confirm()">
 			<div>
 				<label for="name">Name</label>
-				<input type="text" id="name" required
+				<input myInput type="text" placeholder="Name" id="name" required
 				[(ngModel)]="newContact.name" name="name">
 				<p *ngIf="newContact.name">{{newContact.name}}</p>
 			</div>
 			<div>
 				<label for="age">Age</label>
-				<input type="text" id="age" required
+				<input myInput type="number" placeholder="Age" id="age" required
 				[(ngModel)]="newContact.age" name="age">
 				<p *ngIf="newContact.age">{{newContact.age}}</p>
 			</div>
 			<div>
 				<label for="phone">Phone</label>
-				<input type="text" id="phone" required
+				<input myInput type="number" placeholder="Phone number" id="phone" required
 				[(ngModel)]="newContact.phone" name="phone">
 				<p *ngIf="newContact.phone">{{newContact.phone}}</p>
 			</div>

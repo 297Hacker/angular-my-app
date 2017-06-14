@@ -7,26 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AlphabetizerPipe = (function () {
-    function AlphabetizerPipe() {
+var NameFilterPipe = (function () {
+    function NameFilterPipe() {
     }
-    AlphabetizerPipe.prototype.transform = function (contacts) {
-        if (!contacts)
-            return null;
-        return contacts.sort(function (a, b) {
-            if (a.name < b.name)
-                return -1;
-            if (a.name > b.name)
-                return 1;
-            return 0;
-        });
+    NameFilterPipe.prototype.transform = function (contacts, searchTerm) {
+        if (searchTerm.length === 0)
+            return contacts;
+        return contacts.filter(function (term) { return term.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1; });
     };
-    return AlphabetizerPipe;
+    return NameFilterPipe;
 }());
-AlphabetizerPipe = __decorate([
+NameFilterPipe = __decorate([
     core_1.Pipe({
-        name: 'alphabetical'
+        name: 'filterable'
     })
-], AlphabetizerPipe);
-exports.AlphabetizerPipe = AlphabetizerPipe;
-//# sourceMappingURL=alphabetizer.pipe.js.map
+], NameFilterPipe);
+exports.NameFilterPipe = NameFilterPipe;
+//# sourceMappingURL=name-filter.pipe.js.map

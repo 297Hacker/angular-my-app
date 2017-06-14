@@ -26,7 +26,7 @@ var ContactSearchComponent = (function () {
     ContactSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.contacts = this.searchTermStream
-            .debounceTime(500)
+            .debounceTime(100)
             .distinctUntilChanged()
             .switchMap(function (term) { return term
             ? _this.contactSearchService.search(term)

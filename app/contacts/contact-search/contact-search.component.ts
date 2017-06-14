@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from '../shared/contact-model';
 import { ContactSearchService } from '../shared/contact-search.service';
@@ -15,7 +15,7 @@ import { Subject } from 'rxjs/Subject';
 export class ContactSearchComponent implements OnInit {
 	
 	private searchTermStream = new Subject<string>();
-	contacts: Observable<Contact[]>;
+	private contacts: Observable<Contact[]>;
 
 	constructor(private contactSearchService: ContactSearchService,
 		private router: Router){}
@@ -26,14 +26,14 @@ export class ContactSearchComponent implements OnInit {
 
 	ngOnInit(): void{
 	this.contacts = this.searchTermStream
-		.debounceTime(500)
+		.debounceTime(100)
 		.distinctUntilChanged()
 		.switchMap((term) => term 
 			? this.contactSearchService.search(term)
 			: Observable.of<Contact[]>([]))
 		.catch(error => {
 				console.log(error);
-				return Observable.of<Contact>([])
+				return Observable.of<Contact[]>([])
 			})
 	}
 
