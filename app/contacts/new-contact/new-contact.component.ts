@@ -7,6 +7,8 @@ transition,
 animate
  } from '@angular/core';
 
+ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
+
 import { Contact } from '../shared/contact-model';
 import { ContactService } from '../shared/contact.service';
 
@@ -44,6 +46,18 @@ export class NewContactComponent implements OnInit{
 	show:boolean = false;
 
 	buttonState: string = 'inactive';
+
+	newContactForm: FormGroup;
+
+	ngOnInit():void{
+		this.confirmation = true;
+		this.errorMessage = null;
+		this.newContactForm = this.formBuilder.group({
+			name:['', [Validators.required]],
+			age:['', [Validators.required]],
+			phone:['', [Validators.required]]
+		})
+	}
 	
 	growButton(): void{
 		this.buttonState = 'active';
@@ -53,14 +67,9 @@ export class NewContactComponent implements OnInit{
 		this.buttonState = 'inactive';
 	}
 
-	ngOnInit():void{
-		this.setForm();
-	}
-
-	setForm():void{
+	resetForm():void{
+		this.newContactForm.reset();
 		this.confirmation = true;
-		this.errorMessage = null;
-		this.newContact= {};
 	}
 
 
@@ -68,7 +77,7 @@ export class NewContactComponent implements OnInit{
 		this.confirmation = false;
 	}
 
-	constructor(private contactService: ContactService){}
+	constructor(private contactService: ContactService, private formBuilder: FormBuilder){}
 
 	addNewContact(contact: Contact)
 		{
@@ -76,7 +85,7 @@ export class NewContactComponent implements OnInit{
 				return;
 			}this.contactService.addContact(contact)
 				.subscribe(contact => {this.contacts.push(contact);
-										this.setForm();
+										this.resetForm();
 									},
 					error => this.errorMessage = 'Something went wrong' + error
 					)

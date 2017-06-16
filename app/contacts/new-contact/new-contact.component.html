@@ -6,44 +6,40 @@
 <div #newContactInput *ngIf = "showNew" [@bringUpMenu]="newContactInput.state">
 	<div class="container" [hidden]="!confirmation">
 		<h3 class="center-align">Add Contacts</h3>
-		<form class="center-align" (ngSubmit)="confirm()">
+		<form class="center-align"  [formGroup]="newContactForm" (ngSubmit)="confirm()">
 			<div>
 				<label for="name">Name</label>
-				<input #name="ngModel" myInput type="text" placeholder="Name" id="name" required minlength="3" 
-				[(ngModel)]="newContact.name" name="name" #testingClass>
-				<!-- <p *ngIf="newContact.name">{{newContact.name}}</p> -->
-			</div>
-			<div class="required-field" [hidden]="name.valid || name.untouched">
-				Name is required!
+				<input myInput type="text" formControlName="name">
+				<div class="required-field" *ngIf="newContactForm.get('name').hasError('required') && newContactForm.get('name').hasError.touched">
+					Name is required
+				</div>
 			</div>
 			<div>
 				<label for="age">Age</label>
-				<input #age="ngModel" myInput type="number" placeholder="Age" id="age" required
-				[(ngModel)]="newContact.age" name="age">
-	<!-- 			<p *ngIf="newContact.age">{{newContact.age}}</p> -->
-			</div>
-			<div class="required-field" [hidden]="age.valid || age.untouched">
-				Age is required!
+				<input myInput type="number" formControlName="age">
+				<div class="required-field" *ngIf="newContactForm.get('age').hasError('required') && newContactForm.get('age').hasError.touched">
+					Age is required
+				</div>
 			</div>
 			<div>
 				<label for="phone">Phone</label>
-				<input #phone="ngModel" myInput type="number" placeholder="Phone number" id="phone" required pattern="^[0-9] {7}" 
-				[(ngModel)]="newContact.phone" name="phone">
-			<!-- 	<p *ngIf="newContact.phone">{{newContact.phone}}</p> -->
+				<input myInput type="number" formControlName="phone">
+				<div class="required-field" *ngIf="newContactForm.get('phone').hasError('required') && newContactForm.get('phone').hasError.touched">
+					Phone is required
+				</div>
 			</div>
-			<div class="required-field" [hidden]="phone.valid || phone.untouched">
-				Phone# is required!
+			<div class="center-align">
+				<button  [disabled]="newContactForm.invalid" class="waves-effect waves-light btn blue" type="submit">Submit</button>
+				<button class="waves-effect waves-light btn purple" type="button"(click)="resetForm()">Clear</button>
 			</div>
-			<button class="waves-effect waves-light btn blue" type="submit">Submit</button>
-			<button class="waves-effect waves-light btn purple" type="button"(click)="setForm()">Clear</button>
 		</form>
 	</div>
 	<div class="new-confirmation container center-align" [hidden]="confirmation">
 		<h1>You Entered:</h1>
-			<p *ngIf="newContact.name">{{newContact.name}}</p>
-			<p *ngIf="newContact.age">{{newContact.age}}</p>
-			<p *ngIf="newContact.phone">{{newContact.phone}}</p>
-			<button class="waves-effect waves-light btn blue" type="submit" (click)="addNewContact(newContact)">Submit</button>
+			<p>{{newContactForm.value.name}}</p>
+			<p>{{newContactForm.value.age}}</p>
+			<p>{{newContactForm.value.phone}}</p>
+			<button class="waves-effect waves-light btn blue" type="submit" (click)="addNewContact(newContactForm.value)">Submit</button>
 			<button class="waves-effect waves-light btn purple" type="button" (click)="confirmation=true">Edit</button>
 	</div>
 	<div *ngIf="errorMessage">

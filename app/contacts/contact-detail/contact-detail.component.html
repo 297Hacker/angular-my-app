@@ -1,16 +1,23 @@
 <div class="container" *ngIf="contact">
-			<h3>{{contact.name}} Details</h3>
-			<label>Name:</label>
-			<input [(ngModel)]="contact.name" placeholder="name"/>
-			<div>
-				<label> Age: </label>
-				<input [(ngModel)] ="contact.age" placeholder="age"/>
+	<form [formGroup]="contactDetails">
+		<h3>{{contactDetails.value.name}}'s' Details</h3>
+		<label>Name:</label>
+		<input formControlName="name" placeholder="name"/>
+			<div class="required-field" *ngIf="contactDetails.get('name').hasError('required') && contactDetails.get('name').touched">
+			Name is required!
 			</div>
-			<div>
-				<label> Phone Number </label>
-				<input [(ngModel)]="contact.phone" placeholder="phone"/>
+			<label> Age: </label>
+			<input formControlName="age" type="number" placeholder="age"/>
+			<div class="required-field" *ngIf="contactDetails.get('name').hasError('required') && contactDetails.get('age').touched">
+			Age is required!
 			</div>
-			<button class="btn-large waves-effect waves-light red" type="button" (click)="update(contact)">Update</button>
-			<button class="btn-large waves-effect waves-light blue" type="button" (click)="delete(contact)">delete</button>
-			<button class="btn-large waves-effect waves-light green" type="button" (click)="back()">Go back</button>
+			<label> Phone Number </label>
+			<input formControlName="phone" placeholder="phone"/>
+			<div class="required-field" *ngIf="contactDetails.get('name').hasError('required') && contactDetails.get('phone').touched">
+			Phone is required!
+			</div>
+		<button [disabled]="contactDetails.invalid" class="btn-large waves-effect waves-light red" type="button" (click)="update(contactDetails.value)">Update</button>
+		<button class="btn-large waves-effect waves-light blue" type="button" (click)="delete(contactDetails.value)">delete</button>
+		<button class="btn-large waves-effect waves-light green" type="button" (click)="back()">Go back</button>
+	</form>
 </div>

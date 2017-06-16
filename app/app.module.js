@@ -35,6 +35,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             http_1.HttpModule,
             in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 0 }),
             router_1.RouterModule.forRoot([

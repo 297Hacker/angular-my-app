@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
@@ -30,6 +30,7 @@ import { NameFilterPipe } from './contacts/pipes/name-filter.pipe';
 @NgModule({
 	imports: [ BrowserModule,
 				FormsModule,
+				ReactiveFormsModule,
 				HttpModule,
 				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 0}),
 				RouterModule.forRoot([

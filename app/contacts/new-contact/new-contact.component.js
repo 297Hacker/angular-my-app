@@ -11,26 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 //form to add new contact
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var contact_service_1 = require("../shared/contact.service");
 var NewContactComponent = (function () {
-    function NewContactComponent(contactService) {
+    function NewContactComponent(contactService, formBuilder) {
         this.contactService = contactService;
+        this.formBuilder = formBuilder;
         this.show = false;
         this.buttonState = 'inactive';
     }
+    NewContactComponent.prototype.ngOnInit = function () {
+        this.confirmation = true;
+        this.errorMessage = null;
+        this.newContactForm = this.formBuilder.group({
+            name: ['', [forms_1.Validators.required]],
+            age: ['', [forms_1.Validators.required]],
+            phone: ['', [forms_1.Validators.required]]
+        });
+    };
     NewContactComponent.prototype.growButton = function () {
         this.buttonState = 'active';
     };
     NewContactComponent.prototype.shrinkButton = function () {
         this.buttonState = 'inactive';
     };
-    NewContactComponent.prototype.ngOnInit = function () {
-        this.setForm();
-    };
-    NewContactComponent.prototype.setForm = function () {
+    NewContactComponent.prototype.resetForm = function () {
+        this.newContactForm.reset();
         this.confirmation = true;
-        this.errorMessage = null;
-        this.newContact = {};
     };
     NewContactComponent.prototype.confirm = function () {
         this.confirmation = false;
@@ -43,7 +50,7 @@ var NewContactComponent = (function () {
         this.contactService.addContact(contact)
             .subscribe(function (contact) {
             _this.contacts.push(contact);
-            _this.setForm();
+            _this.resetForm();
         }, function (error) { return _this.errorMessage = 'Something went wrong' + error; });
     };
     return NewContactComponent;
@@ -77,7 +84,7 @@ NewContactComponent = __decorate([
         templateUrl: 'new-contact.component.html',
         styleUrls: ['new-contact.component.css']
     }),
-    __metadata("design:paramtypes", [contact_service_1.ContactService])
+    __metadata("design:paramtypes", [contact_service_1.ContactService, forms_1.FormBuilder])
 ], NewContactComponent);
 exports.NewContactComponent = NewContactComponent;
 //# sourceMappingURL=new-contact.component.js.map
