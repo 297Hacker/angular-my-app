@@ -53,8 +53,8 @@ export class NewContactComponent implements OnInit{
 		this.confirmation = true;
 		this.errorMessage = null;
 		this.newContactForm = this.formBuilder.group({
-			name:['', [Validators.required]],
-			age:['', [Validators.required]],
+			name:['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+			age:['', [Validators.required, Validators.pattern('[0-9]{1,3}')]],
 			phone:['', [Validators.required]]
 		})
 	}

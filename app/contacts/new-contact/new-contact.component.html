@@ -11,7 +11,7 @@
 				<label for="name">Name</label>
 				<input myInput type="text" formControlName="name">
 				<div class="required-field" *ngIf="newContactForm.get('name').hasError('required') && newContactForm.get('name').hasError.touched">
-					Name is required
+					Name is required!
 				</div>
 			</div>
 			<div>

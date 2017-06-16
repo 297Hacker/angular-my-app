@@ -24,8 +24,8 @@ var NewContactComponent = (function () {
         this.confirmation = true;
         this.errorMessage = null;
         this.newContactForm = this.formBuilder.group({
-            name: ['', [forms_1.Validators.required]],
-            age: ['', [forms_1.Validators.required]],
+            name: ['', [forms_1.Validators.required, forms_1.Validators.pattern('^[A-Za-z]+$')]],
+            age: ['', [forms_1.Validators.required, forms_1.Validators.pattern('[0-9]{1,3}')]],
             phone: ['', [forms_1.Validators.required]]
         });
     };

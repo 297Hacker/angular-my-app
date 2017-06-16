@@ -2,7 +2,7 @@
 	margin-bottom: 50px;
 }
 
-.ng-valid[required], .ng-valid.required{
+.ng-valid:not(form){
 	background-color: #e8f5e9;
 }
 

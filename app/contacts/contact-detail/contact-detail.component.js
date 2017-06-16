@@ -26,9 +26,11 @@ var ContactDetailComponent = (function () {
         this.route.params.forEach(function (params) {
             var id = +params['id'];
             _this.contactService.getContactDetails(id)
-                .subscribe(function (contact) { return _this.contact = contact; });
+                .subscribe(function (contact) {
+                _this.contact = contact;
+                _this.populateDetails();
+            });
         });
-        this.populateDetails();
     };
     ContactDetailComponent.prototype.populateDetails = function () {
         this.contactDetails = this.formBuilder.group({
