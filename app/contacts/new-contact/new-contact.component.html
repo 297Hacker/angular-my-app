@@ -9,21 +9,30 @@
 		<form class="center-align" (ngSubmit)="confirm()">
 			<div>
 				<label for="name">Name</label>
-				<input myInput type="text" placeholder="Name" id="name" required
-				[(ngModel)]="newContact.name" name="name">
-				<p *ngIf="newContact.name">{{newContact.name}}</p>
+				<input #name="ngModel" myInput type="text" placeholder="Name" id="name" required minlength="3" 
+				[(ngModel)]="newContact.name" name="name" #testingClass>
+				<!-- <p *ngIf="newContact.name">{{newContact.name}}</p> -->
+			</div>
+			<div class="required-field" [hidden]="name.valid || name.untouched">
+				Name is required!
 			</div>
 			<div>
 				<label for="age">Age</label>
-				<input myInput type="number" placeholder="Age" id="age" required
+				<input #age="ngModel" myInput type="number" placeholder="Age" id="age" required
 				[(ngModel)]="newContact.age" name="age">
-				<p *ngIf="newContact.age">{{newContact.age}}</p>
+	<!-- 			<p *ngIf="newContact.age">{{newContact.age}}</p> -->
+			</div>
+			<div class="required-field" [hidden]="age.valid || age.untouched">
+				Age is required!
 			</div>
 			<div>
 				<label for="phone">Phone</label>
-				<input myInput type="number" placeholder="Phone number" id="phone" required
+				<input #phone="ngModel" myInput type="number" placeholder="Phone number" id="phone" required pattern="^[0-9] {7}" 
 				[(ngModel)]="newContact.phone" name="phone">
-				<p *ngIf="newContact.phone">{{newContact.phone}}</p>
+			<!-- 	<p *ngIf="newContact.phone">{{newContact.phone}}</p> -->
+			</div>
+			<div class="required-field" [hidden]="phone.valid || phone.untouched">
+				Phone# is required!
 			</div>
 			<button class="waves-effect waves-light btn blue" type="submit">Submit</button>
 			<button class="waves-effect waves-light btn purple" type="button"(click)="setForm()">Clear</button>
