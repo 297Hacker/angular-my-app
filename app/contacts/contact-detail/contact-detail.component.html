@@ -1,3 +1,4 @@
+<spinner [contactCheck]="contact">
 <div class="container" *ngIf="contact">
 	<form [formGroup]="contactDetails">
 		<h3>{{contactDetails.value.name}}'s' Details</h3>
@@ -21,3 +22,4 @@
 		<button class="btn-large waves-effect waves-light green" type="button" (click)="back()">Go back</button>
 	</form>
 </div>
+</spinner>

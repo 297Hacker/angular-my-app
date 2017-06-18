@@ -22,6 +22,9 @@ var ContactDetailComponent = (function () {
         this.formBuilder = formBuilder;
     }
     ContactDetailComponent.prototype.ngOnInit = function () {
+        this.getContact();
+    };
+    ContactDetailComponent.prototype.getContact = function () {
         var _this = this;
         this.route.params.forEach(function (params) {
             var id = +params['id'];

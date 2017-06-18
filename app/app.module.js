@@ -40,7 +40,7 @@ AppModule = __decorate([
             forms_1.ReactiveFormsModule,
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
-            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 100 }),
+            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 1000 }),
         ],
         providers: [contact_service_1.ContactService],
         declarations: [app_component_1.AppComponent,

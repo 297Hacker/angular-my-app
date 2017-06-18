@@ -37,7 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
 				ReactiveFormsModule,
 				HttpModule,
 				AppRoutingModule,
-				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 100}),
+				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 1000}),
 	],	
 
 	providers: [ContactService ],

@@ -34,6 +34,11 @@ export class ContactDetailComponent implements OnInit{
 		) {}
 
 	ngOnInit(): void{
+		this.getContact();
+	
+	}
+
+	getContact(): void{
 		this.route.params.forEach((params: Params) => {
 			let id = +params['id'];
 			this.contactService.getContactDetails(id)

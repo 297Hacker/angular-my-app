@@ -31,7 +31,7 @@ export class ContactsComponent implements OnInit{
 	getContacts(){
 		this.contactService.getContacts()
 			.subscribe(
-				contacts => this.contacts = contacts,
+				contacts => {this.contacts = contacts;},
 				error => console.log(error)
 				);
 	}

@@ -24,7 +24,9 @@ var HomeComponent = (function () {
     HomeComponent.prototype.getNewest = function () {
         var _this = this;
         this.contactService.getNewest()
-            .subscribe(function (contact) { return _this.contact = contact; });
+            .subscribe(function (contact) {
+            _this.contact = contact;
+        });
     };
     HomeComponent.prototype.gotoDetails = function (contact) {
         var link = ['/contacts', contact.id];
