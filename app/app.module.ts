@@ -18,7 +18,8 @@ import { HomeComponent } from './contacts/home/home.component';
 import { CvComponent } from './cv.component';
 
 import { ContactService } from './contacts/shared/contact.service';
-import { ContactSearchComponent } from './contacts/contact-search/contact-search.component'
+import { ContactSearchComponent } from './contacts/contact-search/contact-search.component';
+import { PageNotFoundComponent } from './contacts/page-not-found/page-not-found.component';
 
 import { SearchBarDirective } from './contacts/directives/searchbar.directive';
 import { HoverDirective } from './contacts/directives/hover.directive';
@@ -27,34 +28,17 @@ import { CapitalizerPipe } from './contacts/pipes/capitalizer.pipe';
 import { AlphabetizerPipe } from './contacts/pipes/alphabetizer.pipe';
 import { NameFilterPipe } from './contacts/pipes/name-filter.pipe';
 
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
 	imports: [ BrowserModule,
 				FormsModule,
 				ReactiveFormsModule,
 				HttpModule,
+				AppRoutingModule,
 				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 0}),
-				RouterModule.forRoot([
-					{
-						path: 'contacts/:id',
-						component: ContactDetailComponent
-					},
-					{	
-						path: 'home',
-						component: HomeComponent
-					},
-					{
-						path: 'cv',
-						component: CvComponent
-					},
-					{
-						path: '',
-						redirectTo: '/home',
-						pathMatch: 'full'
-					},
-					{
-						path: 'contacts',
-						component: ContactsComponent
-					}]) ],
+	],	
+
 	providers: [ContactService ],
 	declarations: [ AppComponent,
 					ContactsComponent,
@@ -67,7 +51,9 @@ import { NameFilterPipe } from './contacts/pipes/name-filter.pipe';
 					CapitalizerPipe,
 					HoverDirective,
 					AlphabetizerPipe,
-					NameFilterPipe ],
+					NameFilterPipe,
+					PageNotFoundComponent ],
+
 	bootstrap: [ AppComponent ]
 })
 
