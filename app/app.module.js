@@ -21,6 +21,7 @@ var cv_component_1 = require("./cv.component");
 var contact_service_1 = require("./contacts/shared/contact.service");
 var contact_search_component_1 = require("./contacts/contact-search/contact-search.component");
 var page_not_found_component_1 = require("./contacts/page-not-found/page-not-found.component");
+var loading_component_1 = require("./contacts/loading/loading.component");
 var searchbar_directive_1 = require("./contacts/directives/searchbar.directive");
 var hover_directive_1 = require("./contacts/directives/hover.directive");
 var capitalizer_pipe_1 = require("./contacts/pipes/capitalizer.pipe");
@@ -39,7 +40,7 @@ AppModule = __decorate([
             forms_1.ReactiveFormsModule,
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
-            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 0 }),
+            in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 100 }),
         ],
         providers: [contact_service_1.ContactService],
         declarations: [app_component_1.AppComponent,
@@ -54,7 +55,8 @@ AppModule = __decorate([
             hover_directive_1.HoverDirective,
             alphabetizer_pipe_1.AlphabetizerPipe,
             name_filter_pipe_1.NameFilterPipe,
-            page_not_found_component_1.PageNotFoundComponent],
+            page_not_found_component_1.PageNotFoundComponent,
+            loading_component_1.SpinnerComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

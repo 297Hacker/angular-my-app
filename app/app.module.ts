@@ -20,6 +20,7 @@ import { CvComponent } from './cv.component';
 import { ContactService } from './contacts/shared/contact.service';
 import { ContactSearchComponent } from './contacts/contact-search/contact-search.component';
 import { PageNotFoundComponent } from './contacts/page-not-found/page-not-found.component';
+import { SpinnerComponent } from './contacts/loading/loading.component';
 
 import { SearchBarDirective } from './contacts/directives/searchbar.directive';
 import { HoverDirective } from './contacts/directives/hover.directive';
@@ -36,7 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
 				ReactiveFormsModule,
 				HttpModule,
 				AppRoutingModule,
-				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 0}),
+				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 100}),
 	],	
 
 	providers: [ContactService ],
@@ -52,7 +53,8 @@ import { AppRoutingModule } from './app-routing.module';
 					HoverDirective,
 					AlphabetizerPipe,
 					NameFilterPipe,
-					PageNotFoundComponent ],
+					PageNotFoundComponent,
+					SpinnerComponent ],
 
 	bootstrap: [ AppComponent ]
 })

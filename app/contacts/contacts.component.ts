@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 // import { CONTACTS } from './contacts';
-
 import { Router } from '@angular/router';
 
 import { Contact } from './shared/contact-model';
