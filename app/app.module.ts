@@ -1,36 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { RouterModule } from '@angular/router';
-
+import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/bundles/in-memory-web-api.umd.js';
 import { InMemoryDataService} from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { NewContactComponent } from './contacts/new-contact/new-contact.component';
-import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
-import { HomeComponent } from './contacts/home/home.component';
-import { CvComponent } from './cv.component';
 
-import { ContactService } from './contacts/shared/contact.service';
-import { ContactSearchComponent } from './contacts/contact-search/contact-search.component';
-import { PageNotFoundComponent } from './contacts/page-not-found/page-not-found.component';
-import { SpinnerComponent } from './contacts/loading/loading.component';
+import { ContactsModule } from './contacts/contacts.module';
 
-import { SearchBarDirective } from './contacts/directives/searchbar.directive';
-import { HoverDirective } from './contacts/directives/hover.directive';
-
-import { CapitalizerPipe } from './contacts/pipes/capitalizer.pipe';
-import { AlphabetizerPipe } from './contacts/pipes/alphabetizer.pipe';
-import { NameFilterPipe } from './contacts/pipes/name-filter.pipe';
-import { CanDeactivateGuard } from './contacts/guards/can-deactivate.guard';
-
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 	imports: [ BrowserModule,
@@ -39,25 +20,10 @@ import { AppRoutingModule } from './app-routing.module';
 				HttpModule,
 				AppRoutingModule,
 				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 1000}),
+				ContactsModule
 	],	
 
-	providers: [ContactService,
-				CanDeactivateGuard ],
-
-	declarations: [ AppComponent,
-					ContactsComponent,
-					NewContactComponent,
-					ContactDetailComponent,
-					HomeComponent,
-					CvComponent,
-					ContactSearchComponent,
-					SearchBarDirective,
-					CapitalizerPipe,
-					HoverDirective,
-					AlphabetizerPipe,
-					NameFilterPipe,
-					PageNotFoundComponent,
-					SpinnerComponent ],
+	declarations: [ AppComponent],
 
 	bootstrap: [ AppComponent ]
 })

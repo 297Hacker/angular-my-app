@@ -9,8 +9,8 @@ import { NewContactComponent } from './new-contact/new-contact.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ContactSearchComponent } from './contact-search/contact-search.component';
-// import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-// import { SpinnerComponent } from './loading/loading.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SpinnerComponent } from './loading/loading.component';
 
 import { ContactService } from './shared/contact.service';
 
@@ -21,7 +21,7 @@ import { CapitalizerPipe } from './pipes/capitalizer.pipe';
 import { AlphabetizerPipe } from './pipes/alphabetizer.pipe';
 import { NameFilterPipe } from './pipes/name-filter.pipe';
 
-// import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 
 @NgModule({
         imports: [
@@ -30,20 +30,21 @@ import { NameFilterPipe } from './pipes/name-filter.pipe';
         ReactiveFormsModule,
         HttpModule
     ],
-    providers: [ ContactService ],
+    providers: [ ContactService,
+                  CanDeactivateGuard ],
     declarations: [
         ContactsComponent,
         NewContactComponent,
         ContactDetailComponent,
         HomeComponent,
         ContactSearchComponent,
-        // PageNotFoundComponent,
-        // SpinnerComponent,
+        PageNotFoundComponent,
+        SpinnerComponent,
         SearchBarDirective,
         HoverDirective,
         CapitalizerPipe,
         AlphabetizerPipe,
-        NameFilterPipe
+        NameFilterPipe 
     ]
 })
 

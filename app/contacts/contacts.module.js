@@ -15,15 +15,15 @@ var new_contact_component_1 = require("./new-contact/new-contact.component");
 var contact_detail_component_1 = require("./contact-detail/contact-detail.component");
 var home_component_1 = require("./home/home.component");
 var contact_search_component_1 = require("./contact-search/contact-search.component");
-// import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-// import { SpinnerComponent } from './loading/loading.component';
+var page_not_found_component_1 = require("./page-not-found/page-not-found.component");
+var loading_component_1 = require("./loading/loading.component");
 var contact_service_1 = require("./shared/contact.service");
 var searchbar_directive_1 = require("./directives/searchbar.directive");
 var hover_directive_1 = require("./directives/hover.directive");
 var capitalizer_pipe_1 = require("./pipes/capitalizer.pipe");
 var alphabetizer_pipe_1 = require("./pipes/alphabetizer.pipe");
 var name_filter_pipe_1 = require("./pipes/name-filter.pipe");
-// import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+var can_deactivate_guard_1 = require("./guards/can-deactivate.guard");
 var ContactsModule = (function () {
     function ContactsModule() {
     }
@@ -37,15 +37,16 @@ ContactsModule = __decorate([
             forms_1.ReactiveFormsModule,
             http_1.HttpModule
         ],
-        providers: [contact_service_1.ContactService],
+        providers: [contact_service_1.ContactService,
+            can_deactivate_guard_1.CanDeactivateGuard],
         declarations: [
             contacts_component_1.ContactsComponent,
             new_contact_component_1.NewContactComponent,
             contact_detail_component_1.ContactDetailComponent,
             home_component_1.HomeComponent,
             contact_search_component_1.ContactSearchComponent,
-            // PageNotFoundComponent,
-            // SpinnerComponent,
+            page_not_found_component_1.PageNotFoundComponent,
+            loading_component_1.SpinnerComponent,
             searchbar_directive_1.SearchBarDirective,
             hover_directive_1.HoverDirective,
             capitalizer_pipe_1.CapitalizerPipe,
