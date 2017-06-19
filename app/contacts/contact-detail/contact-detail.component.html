@@ -17,9 +17,9 @@
 			<div class="required-field" *ngIf="contactDetails.get('name').hasError('required') && contactDetails.get('phone').touched">
 			Phone is required!
 			</div>
-		<button [disabled]="contactDetails.invalid" class="btn-large waves-effect waves-light red" type="button" (click)="update(contactDetails.value)">Update</button>
+		<button [disabled]="contactDetails.invalid || contactDetails.pristine" class="btn-large waves-effect waves-light red" type="button" (click)="update(contactDetails.value)">Update</button>
 		<button class="btn-large waves-effect waves-light blue" type="button" (click)="delete(contactDetails.value)">delete</button>
-		<button class="btn-large waves-effect waves-light green" type="button" (click)="back()">Go back</button>
+		<button class="btn-large waves-effect waves-light green" type="button" (click)="toContacts()">Go to all Contacts</button>
 	</form>
 </div>
 </spinner>

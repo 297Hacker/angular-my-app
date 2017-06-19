@@ -72,7 +72,6 @@ export class NewContactComponent implements OnInit{
 		this.confirmation = true;
 	}
 
-
 	confirm(){
 		this.confirmation = false;
 	}
@@ -90,5 +89,12 @@ export class NewContactComponent implements OnInit{
 					error => this.errorMessage = 'Something went wrong' + error
 					)
 
+		}
+
+		checkForm(): boolean{
+			if(!this.newContactForm){
+				return true;
+			}
+			return this.newContactForm.pristine;
 		}
 }

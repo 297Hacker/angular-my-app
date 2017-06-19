@@ -12,10 +12,22 @@ var contacts_component_1 = require("./contacts/contacts.component");
 var home_component_1 = require("./contacts/home/home.component");
 var contact_detail_component_1 = require("./contacts/contact-detail/contact-detail.component");
 var page_not_found_component_1 = require("./contacts/page-not-found/page-not-found.component");
+var can_deactivate_guard_1 = require("./contacts/guards/can-deactivate.guard");
 var routes = [
-    { path: 'contacts/:id', component: contact_detail_component_1.ContactDetailComponent },
-    { path: 'home', component: home_component_1.HomeComponent },
-    { path: 'contacts', component: contacts_component_1.ContactsComponent },
+    {
+        path: 'contacts/:id',
+        component: contact_detail_component_1.ContactDetailComponent,
+        canDeactivate: [can_deactivate_guard_1.CanDeactivateGuard]
+    },
+    {
+        path: 'home',
+        component: home_component_1.HomeComponent
+    },
+    {
+        path: 'contacts',
+        component: contacts_component_1.ContactsComponent,
+        canDeactivate: [can_deactivate_guard_1.CanDeactivateGuard]
+    },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
 ];

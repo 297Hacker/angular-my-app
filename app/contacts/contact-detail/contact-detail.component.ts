@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { ActivatedRoute, Params } from '@angular/router'; 
-import { Location } from '@angular/common';
-
+import { ActivatedRoute, Params, Router } from '@angular/router'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-
 import { Contact } from '../shared/contact-model';
 import { ContactService } from '../shared/contact.service';
 
@@ -29,13 +25,22 @@ export class ContactDetailComponent implements OnInit{
 	constructor(
 		private contactService: ContactService,
 		private route: ActivatedRoute,
-		private location : Location,
-		private formBuilder: FormBuilder
+		private formBuilder: FormBuilder,
+		private router: Router
 		) {}
 
 	ngOnInit(): void{
 		this.getContact();
 	
+	}
+
+	canDeactivate(): boolean{
+		if(!this.contact || JSON.stringify(this.contact) === JSON.stringify(this.contactDetails.value)){
+			return true;
+		}else{
+			return window.confirm('Are you sure? all unsaved progress will be lost!')
+		}
+		// return this.contactDetails.dirty
 	}
 
 	getContact(): void{
@@ -58,17 +63,23 @@ export class ContactDetailComponent implements OnInit{
 		})
 	}
 
-	back(){
-		this.location.back();
+	toContacts(){
+		this.router.navigate(['/contacts'])
 	}
 
 	update(contact: Contact){
 		this.contactService.update(contact)
-			.subscribe(()=> this.back())
+
+			.subscribe((contact)=> {this.contact = contact;
+									this.toContacts();
+
+				})
 	}
 
 	delete(contact: Contact){
 		this.contactService.deleteContacts(contact)
-		.subscribe(() => this.back())
+		.subscribe(() => {	this.contact = null;
+							this.toContacts();
+						})
 	}
 }

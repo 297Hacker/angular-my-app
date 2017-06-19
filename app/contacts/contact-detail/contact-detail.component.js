@@ -11,18 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var contact_service_1 = require("../shared/contact.service");
 var ContactDetailComponent = (function () {
-    function ContactDetailComponent(contactService, route, location, formBuilder) {
+    function ContactDetailComponent(contactService, route, formBuilder, router) {
         this.contactService = contactService;
         this.route = route;
-        this.location = location;
         this.formBuilder = formBuilder;
+        this.router = router;
     }
     ContactDetailComponent.prototype.ngOnInit = function () {
         this.getContact();
+    };
+    ContactDetailComponent.prototype.canDeactivate = function () {
+        if (!this.contact || JSON.stringify(this.contact) === JSON.stringify(this.contactDetails.value)) {
+            return true;
+        }
+        else {
+            return window.confirm('Are you sure? all unsaved progress will be lost!');
+        }
+        // return this.contactDetails.dirty
     };
     ContactDetailComponent.prototype.getContact = function () {
         var _this = this;
@@ -43,18 +51,24 @@ var ContactDetailComponent = (function () {
             phone: [this.contact.phone, [forms_1.Validators.required]]
         });
     };
-    ContactDetailComponent.prototype.back = function () {
-        this.location.back();
+    ContactDetailComponent.prototype.toContacts = function () {
+        this.router.navigate(['/contacts']);
     };
     ContactDetailComponent.prototype.update = function (contact) {
         var _this = this;
         this.contactService.update(contact)
-            .subscribe(function () { return _this.back(); });
+            .subscribe(function (contact) {
+            _this.contact = contact;
+            _this.toContacts();
+        });
     };
     ContactDetailComponent.prototype.delete = function (contact) {
         var _this = this;
         this.contactService.deleteContacts(contact)
-            .subscribe(function () { return _this.back(); });
+            .subscribe(function () {
+            _this.contact = null;
+            _this.toContacts();
+        });
     };
     return ContactDetailComponent;
 }());
@@ -67,8 +81,8 @@ ContactDetailComponent = __decorate([
     }),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
         router_1.ActivatedRoute,
-        common_1.Location,
-        forms_1.FormBuilder])
+        forms_1.FormBuilder,
+        router_1.Router])
 ], ContactDetailComponent);
 exports.ContactDetailComponent = ContactDetailComponent;
 //# sourceMappingURL=contact-detail.component.js.map

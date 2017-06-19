@@ -53,6 +53,12 @@ var NewContactComponent = (function () {
             _this.resetForm();
         }, function (error) { return _this.errorMessage = 'Something went wrong' + error; });
     };
+    NewContactComponent.prototype.checkForm = function () {
+        if (!this.newContactForm) {
+            return true;
+        }
+        return this.newContactForm.pristine;
+    };
     return NewContactComponent;
 }());
 __decorate([

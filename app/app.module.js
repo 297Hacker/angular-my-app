@@ -27,6 +27,7 @@ var hover_directive_1 = require("./contacts/directives/hover.directive");
 var capitalizer_pipe_1 = require("./contacts/pipes/capitalizer.pipe");
 var alphabetizer_pipe_1 = require("./contacts/pipes/alphabetizer.pipe");
 var name_filter_pipe_1 = require("./contacts/pipes/name-filter.pipe");
+var can_deactivate_guard_1 = require("./contacts/guards/can-deactivate.guard");
 var app_routing_module_1 = require("./app-routing.module");
 var AppModule = (function () {
     function AppModule() {
@@ -42,7 +43,8 @@ AppModule = __decorate([
             app_routing_module_1.AppRoutingModule,
             in_memory_web_api_umd_js_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService, { delay: 1000 }),
         ],
-        providers: [contact_service_1.ContactService],
+        providers: [contact_service_1.ContactService,
+            can_deactivate_guard_1.CanDeactivateGuard],
         declarations: [app_component_1.AppComponent,
             contacts_component_1.ContactsComponent,
             new_contact_component_1.NewContactComponent,

@@ -28,6 +28,7 @@ import { HoverDirective } from './contacts/directives/hover.directive';
 import { CapitalizerPipe } from './contacts/pipes/capitalizer.pipe';
 import { AlphabetizerPipe } from './contacts/pipes/alphabetizer.pipe';
 import { NameFilterPipe } from './contacts/pipes/name-filter.pipe';
+import { CanDeactivateGuard } from './contacts/guards/can-deactivate.guard';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -40,7 +41,9 @@ import { AppRoutingModule } from './app-routing.module';
 				InMemoryWebApiModule.forRoot(InMemoryDataService, {delay : 1000}),
 	],	
 
-	providers: [ContactService ],
+	providers: [ContactService,
+				CanDeactivateGuard ],
+
 	declarations: [ AppComponent,
 					ContactsComponent,
 					NewContactComponent,
